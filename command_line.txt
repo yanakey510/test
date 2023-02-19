@@ -1,0 +1,242 @@
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git log
+commit 4ddda8cf32ee3892b691f632628331a4b8d7dbe6 (HEAD -> main, origin/main, origin/HEAD)
+Author: yanakey510 <ymur39@gmail.com>
+Date:   Sun Feb 19 22:18:03 2023 +0100
+
+    add sub text
+
+commit 4d24f7d5bf3aef3624059f630df7c2a6c2d138b6
+Author: yanakey510 <125831411+yanakey510@users.noreply.github.com>
+Date:   Sun Feb 19 22:16:50 2023 +0100
+
+    add text
+
+commit 5b908e3814ba678d21db41086af33a713779615f
+Author: yanakey510 <ymur39@gmail.com>
+Date:   Sun Feb 19 22:11:05 2023 +0100
+
+    created test file
+
+commit b399df8271ba9509ce91b1efafb91518f9f4eec7
+Author: yanakey510 <125831411+yanakey510@users.noreply.github.com>
+Date:   Sun Feb 19 21:55:16 2023 +0100
+
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git branch "test"
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git branch --list
+* main
+  test
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git checkout "test"
+Switched to branch 'test'
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (test)
+$ git checkout "main"
+Switched to branch 'main'
+M       test.txt
+Your branch is up to date with 'origin/main'.
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git checkout "test"
+Switched to branch 'test'
+M       test.txt
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (test)
+$ git add *
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (test)
+$ git commit -m "add branch"
+[test 5a95040] add branch
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (test)
+$ git push -u origin test
+remote: Permission to yanakey510/test.git denied to YanaKey12.
+fatal: unable to access 'https://github.com/yanakey510/test.git/': The requested URL returned error: 403
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (test)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git branch --list --remote
+  origin/HEAD -> origin/main
+  origin/main
+  origin/test
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git branch -a
+* main
+  test
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+  remotes/origin/test
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git merge test
+Updating 4ddda8c..5a95040
+Fast-forward
+ test.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git log
+commit 5a9504020b678dc88929543fc0c2c154504df49b (HEAD -> main, origin/test, test)
+Author: yanakey510 <ymur39@gmail.com>
+Date:   Sun Feb 19 22:24:19 2023 +0100
+
+    add branch
+
+commit 4ddda8cf32ee3892b691f632628331a4b8d7dbe6 (origin/main, origin/HEAD)
+Author: yanakey510 <ymur39@gmail.com>
+Date:   Sun Feb 19 22:18:03 2023 +0100
+
+    add sub text
+
+commit 4d24f7d5bf3aef3624059f630df7c2a6c2d138b6
+Author: yanakey510 <125831411+yanakey510@users.noreply.github.com>
+Date:   Sun Feb 19 22:16:50 2023 +0100
+
+    add text
+
+commit 5b908e3814ba678d21db41086af33a713779615f
+Author: yanakey510 <ymur39@gmail.com>
+Date:   Sun Feb 19 22:11:05 2023 +0100
+
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git revert 5a9504020b678dc88929543fc0c2c154504df49b
+[main dc34768] Revert "add branch"
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git log
+commit dc34768357e315401f75413642205bc824f06365 (HEAD -> main)
+Author: yanakey510 <ymur39@gmail.com>
+Date:   Sun Feb 19 22:30:07 2023 +0100
+
+    Revert "add branch"
+
+    This reverts commit 5a9504020b678dc88929543fc0c2c154504df49b.
+
+commit 5a9504020b678dc88929543fc0c2c154504df49b (origin/test, test)
+Author: yanakey510 <ymur39@gmail.com>
+Date:   Sun Feb 19 22:24:19 2023 +0100
+
+    add branch
+
+commit 4ddda8cf32ee3892b691f632628331a4b8d7dbe6 (origin/main, origin/HEAD)
+Author: yanakey510 <ymur39@gmail.com>
+Date:   Sun Feb 19 22:18:03 2023 +0100
+
+    add sub text
+
+commit 4d24f7d5bf3aef3624059f630df7c2a6c2d138b6
+Author: yanakey510 <125831411+yanakey510@users.noreply.github.com>
+Date:   Sun Feb 19 22:16:50 2023 +0100
+
+    add text
+
+commit 5b908e3814ba678d21db41086af33a713779615f
+Author: yanakey510 <ymur39@gmail.com>
+Date:   Sun Feb 19 22:11:05 2023 +0100
+
+    created test file
+
+commit b399df8271ba9509ce91b1efafb91518f9f4eec7
+Author: yanakey510 <125831411+yanakey510@users.noreply.github.com>
+Date:   Sun Feb 19 21:55:16 2023 +0100
+
+    Initial commit
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git status
+HEAD detached at 5a95040
+nothing to commit, working tree clean
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 ((5a95040...))
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git branch checout "new_test"
+fatal: Not a valid object name: 'new_test'.
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git branch "new_test"
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git checout "new_test"
+git: 'checout' is not a git command. See 'git --help'.
+
+The most similar command is
+        checkout
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git checkout "new_test"
+Switched to branch 'new_test'
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (new_test)
+$ git add *
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (new_test)
+$ git commit -m "new message"
+[new_test 78854bb] new message
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (new_test)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git add*
+git: 'add*' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git add *
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git commit -m "new message 2"
+[main 8bfcf7a] new message 2
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main)
+$ git merge "new_test"
+Auto-merging test.txt
+CONFLICT (content): Merge conflict in test.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+y.kliuchnikava@INV-381PL-L MINGW64 ~/Desktop/Education/git/test2 (main|MERGING)
+$ git commit -m "merge"
+[main da28245] merge
+
